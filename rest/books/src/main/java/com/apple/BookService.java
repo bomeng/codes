@@ -1,5 +1,7 @@
 package com.apple;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -12,22 +14,18 @@ import javax.ws.rs.core.Response;
 public class BookService {
 	@GET
 	@Path("/get")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Book getTrackInJSON() {
-		Book book = new Book();
-		book.setTitle("Enter Sandman");
-		book.setSinger("Metallica");
-
-		return book;
+	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	public List<Book> getBooks() {
+		BookDao dao = new BookDao();
+		return dao.getBooks();
 	}
 
 	@POST
 	@Path("/post")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response createTrackInJSON(Book book) {
-		String result = "Track saved : " + book;
+	public Response createBook(Book book) {
+		String result = "Book saved : " + book;
 		return Response.status(201).entity(result).build();
 	}
-
 }
 

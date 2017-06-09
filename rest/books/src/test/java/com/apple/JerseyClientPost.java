@@ -15,7 +15,7 @@ public class JerseyClientPost {
 		WebResource webResource = client
 		   .resource("http://localhost:8080/books/rest/books/post");
 
-		String input = "{\"singer\":\"Metallica\",\"title\":\"Fade To Black\"}";
+		String input = "{\"id\":1,\"price\":19.95,\"authors\":\"Metallica\",\"title\":\"Fade To Black\"}";
 
 		ClientResponse response = webResource.type("application/json")
 		   .post(ClientResponse.class, input);
