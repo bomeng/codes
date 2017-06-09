@@ -14,7 +14,7 @@ public class ClientInsertDeleteTest {
 
 			WebResource webResource = client.resource("http://localhost:8080/books/rest/books/post");
 
-			String input = "{\"id\":4,\"price\":29.95,\"authors\":\"Bo Meng\",\"title\":\"Rest To Test\"}";
+			String input = "{\"id\":4,\"price\":29.95,\"authors\":[\"Bo Meng\",\"Alan Smith\"],\"title\":\"Rest To Test\"}";
 
 			ClientResponse response = webResource.type(MediaType.TEXT_PLAIN).post(ClientResponse.class, input);
 

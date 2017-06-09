@@ -1,6 +1,7 @@
 package com.apple;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -13,6 +14,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -47,7 +50,12 @@ public class BookService {
 			JsonObject bookJson = element.getAsJsonObject();
 			int id = bookJson.get("id").getAsInt();
 			String title = bookJson.get("title").getAsString();
-			String authors = bookJson.get("authors").getAsString();
+			
+			JsonArray authorsJson = bookJson.get("authors").getAsJsonArray();
+			Gson googleJson = new Gson();
+			ArrayList<String> authorsList = googleJson.fromJson(authorsJson, ArrayList.class);
+			String authors = authorsList.toString();
+			
 			double price = bookJson.get("price").getAsDouble();
 			Book book = new Book(id, title, authors, price);
 			dao.createBook(book);
