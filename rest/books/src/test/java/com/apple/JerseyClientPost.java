@@ -6,34 +6,26 @@ import com.sun.jersey.api.client.WebResource;
 
 public class JerseyClientPost {
 
-  public static void main(String[] args) {
+	public static void main(String[] args) {
+		try {
+			Client client = Client.create();
 
-	try {
+			WebResource webResource = client.resource("http://localhost:8080/books/rest/books/post");
 
-		Client client = Client.create();
+			String input = "{\"id\":3,\"price\":19.95,\"authors\":\"Metallica\",\"title\":\"Fade To Black\"}";
 
-		WebResource webResource = client
-		   .resource("http://localhost:8080/books/rest/books/post");
+			ClientResponse response = webResource.type("application/json").post(ClientResponse.class, input);
 
-		String input = "{\"id\":1,\"price\":19.95,\"authors\":\"Metallica\",\"title\":\"Fade To Black\"}";
+			if (response.getStatus() != 201) {
+				throw new RuntimeException("Failed : HTTP error code : " + response.getStatus());
+			}
 
-		ClientResponse response = webResource.type("application/json")
-		   .post(ClientResponse.class, input);
+			System.out.println("Output from Server .... \n");
+			String output = response.getEntity(String.class);
+			System.out.println(output);
 
-		if (response.getStatus() != 201) {
-			throw new RuntimeException("Failed : HTTP error code : "
-			     + response.getStatus());
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-
-		System.out.println("Output from Server .... \n");
-		String output = response.getEntity(String.class);
-		System.out.println(output);
-
-	  } catch (Exception e) {
-
-		e.printStackTrace();
-
-	  }
-
 	}
 }
