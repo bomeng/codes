@@ -1,4 +1,4 @@
-find the subset of a given string set
+# find the subset of a given string set
 
 input:
 string1,string2,string3,...
