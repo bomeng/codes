@@ -5,7 +5,7 @@ object Solution {
   def birthdayCakeCandles(n: Int, ar: Array[Int]): Int = {
     // Complete this function
     val max = ar.max
-    ar.count(_ == ar.max)
+    ar.count(_ == max)
   }
 
   def main(args: Array[String]) {
