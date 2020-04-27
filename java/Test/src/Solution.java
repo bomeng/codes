@@ -1,7 +1,4 @@
-import sun.lwawt.macosx.CSystemTray;
-
 import java.util.*;
-import java.util.stream.Collectors;
 
 class Solution {
     public void rotate(int[][] matrix) {

@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Solution {
+public class Problem1 {
 
     static String[] multiset_subset(String multiset) {
         String[] input = multiset.split(",");
