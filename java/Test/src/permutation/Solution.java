@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 /*
- * Sysdig Java Interview:
  * Given a Long number N, write a function that calculates the highest number lower than N obtained permuting only one digit of N.
  * If no permutation exists to return a lower value, return N.
  * Example:
