@@ -61,7 +61,3 @@ thrift/multiply/target
 rest/books/target
 out/
 
-node_modules
-jspm_packages
-
-*.npm
