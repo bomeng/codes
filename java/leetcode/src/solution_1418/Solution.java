@@ -1,4 +1,4 @@
-package solution_1419.solution_1418;
+package solution_1418;
 
 import java.util.ArrayList;
 import java.util.List;
