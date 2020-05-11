@@ -1,7 +1,5 @@
 package solution_1414;
 
-import sun.lwawt.macosx.CSystemTray;
-
 import java.util.ArrayList;
 import java.util.List;
 
