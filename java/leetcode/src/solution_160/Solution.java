@@ -40,5 +40,6 @@ public class Solution {
             len++;
             node = node.next;
         }
+        return len;
     }
 }
