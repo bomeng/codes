@@ -1,17 +1,11 @@
 package solution_623;
 
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 class TreeNode {
 
     int val;
     TreeNode left;
     TreeNode right;
-
-    TreeNode() {
-    }
 
     TreeNode(int val) {
         this.val = val;
@@ -24,55 +18,30 @@ class TreeNode {
     }
 }
 
-class Item {
-
-    TreeNode node;
-    boolean isLeft;
-
-    public Item(TreeNode node, boolean isLeft) {
-        this.node = node;
-        this.isLeft = isLeft;
-    }
-}
-
 public class Solution {
 
     public TreeNode addOneRow(TreeNode root, int v, int d) {
-        Queue<Item> queue = new LinkedList<>();
-        queue.offer(new Item(root, true));
-        int level = 0;
-        while (!queue.isEmpty()) {
-            int size = queue.size();
-            level = level + 1;
-            if (level == d) {
-                for (int i = 0; i < size; i++) {
-                    Item item = queue.poll();
-                    TreeNode newNode = new TreeNode(item.node.val);
-                    newNode.left = item.node.left;
-                    newNode.right = item.node.right;
+        return addOneRow(root, v, d, true);
+    }
 
-                    item.node.val = v;
-                    if (item.isLeft) {
-                        item.node.left = newNode;
-                        item.node.right = null;
-                    } else {
-                        item.node.right = newNode;
-                        item.node.left = null;
-                    }
+    private TreeNode addOneRow(TreeNode root, int v, int d, boolean isLeft) {
+        if (d == 1) {
+            TreeNode t = new TreeNode(v);
+            if (root != null) {
+                if (isLeft) {
+                    t.left = root;
+                } else {
+                    t.right = root;
                 }
-            } else {
-                for (int i = 0; i < size; i++) {
-                    Item item = queue.poll();
-                    if (item.node.left != null) {
-                        queue.offer(new Item(item.node.left, true));
-                    }
-                    if (item.node.right != null) {
-                        queue.offer(new Item(item.node.right, false));
-                    }
-                }
+
             }
+            return t;
+        } else if (root != null) {
+            root.left = addOneRow(root.left, v, d - 1, true);
+            root.right = addOneRow(root.right, v, d - 1, false);
+            return root;
         }
-        return root;
+        return null;
     }
 
     public static void main(String[] args) {
