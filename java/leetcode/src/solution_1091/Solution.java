@@ -9,6 +9,7 @@ public class Solution {
         if (grid.length == 0 || grid[0][0] == 1) {
             return -1;
         }
+        int[][] directions = {{-1, -1}, {-1, 0}, {-1, 1}, {0, 1}, {1, 1}, {1, 0}, {1, -1}, {0, -1}};
         Queue<int[]> queue = new LinkedList<>();
         queue.offer(new int[] {0, 0});
         int count = 1;
@@ -21,37 +22,13 @@ public class Solution {
                 if (row == grid.length - 1 && col == grid[0].length - 1) {
                     return count;
                 }
-                if (row - 1 >= 0 && col - 1 >= 0 && grid[row - 1][col - 1] == 0) {
-                    grid[row - 1][col - 1] = 1;
-                    queue.offer(new int[] {row - 1, col - 1});
-                }
-                if (row - 1 >= 0 && grid[row - 1][col] == 0) {
-                    grid[row - 1][col] = 1;
-                    queue.offer(new int[] {row - 1, col});
-                }
-                if (row - 1 >= 0 && col + 1 < grid[0].length && grid[row - 1][col + 1] == 0) {
-                    grid[row - 1][col + 1] = 1;
-                    queue.offer(new int[] {row - 1, col + 1});
-                }
-                if (col + 1 < grid[0].length && grid[row][col + 1] == 0) {
-                    grid[row][col + 1] = 1;
-                    queue.offer(new int[] {row, col + 1});
-                }
-                if (row + 1 < grid.length && col + 1 < grid[0].length && grid[row + 1][col + 1] == 0) {
-                    grid[row + 1][col + 1] = 1;
-                    queue.offer(new int[] {row + 1, col + 1});
-                }
-                if (row + 1 < grid.length && grid[row + 1][col] == 0) {
-                    grid[row + 1][col] = 1;
-                    queue.offer(new int[] {row + 1, col});
-                }
-                if (row + 1 < grid.length && col - 1 >= 0 && grid[row + 1][col - 1] == 0) {
-                    grid[row + 1][col - 1] = 1;
-                    queue.offer(new int[] {row + 1, col - 1});
-                }
-                if (col - 1 >= 0 && grid[row][col - 1] == 0) {
-                    grid[row][col - 1] = 1;
-                    queue.offer(new int[] {row, col - 1});
+                for (int[] direction : directions) {
+                    int newRow = row + direction[0];
+                    int newCol = col + direction[1];
+                    if (newRow >= 0 && newRow < grid.length && newCol >= 0 && newCol < grid[0].length && grid[newRow][newCol] == 0) {
+                        grid[newRow][newCol] = 1;
+                        queue.offer(new int[] {newRow, newCol});
+                    }
                 }
             }
             count++;
