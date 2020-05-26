@@ -24,7 +24,6 @@ public class Solution {
             } else {
                 max = Math.max(max, i - map.get(sum));
             }
-            max = Math.max(max, i + 1);
         }
         return max;
     }
