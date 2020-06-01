@@ -8,7 +8,7 @@ public class Solution {
         Set<String> set = new HashSet<>();
         int target = (int) Math.pow(2, k);
         for (int i = 0, n = s.length() - k; i <= n; i++) {
-            set.add(s.substring(i, i + k);
+            set.add(s.substring(i, i + k));
             if (set.size() == target) {
                 return true;
             }
