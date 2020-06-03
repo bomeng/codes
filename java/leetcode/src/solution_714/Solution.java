@@ -3,10 +3,6 @@ package solution_714;
 public class Solution {
 
     public int maxProfit(int[] prices, int fee) {
-        if (prices.length == 0) {
-            return 0;
-        }
-
         // cost[][] will be balance, cost[][0]
         // cost[][0] is balance amount and you are holding a stock after ith day.
         // cost[][1] is balance amount and you are not-holding a stock after ith day.
