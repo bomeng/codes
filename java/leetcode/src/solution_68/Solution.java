@@ -7,22 +7,18 @@ public class Solution {
 
     public List<String> fullJustify(String[] words, int maxWidth) {
         List<List<String>> lines = new ArrayList<>();
-        List<String> line = new ArrayList<>();
-        lines.add(line);
+        List<String> line = null;
         int lineLength = 0;
         for (String word : words) {
-            if (lineLength == 0 || lineLength + 1 + word.length() <= maxWidth) {
+            int len = word.length();
+            if (lineLength > 0 && lineLength + 1 + len <= maxWidth) {
                 line.add(word);
-                if (lineLength == 0) {
-                    lineLength = word.length();
-                } else {
-                    lineLength = lineLength + 1 + word.length();
-                }
+                lineLength = lineLength + 1 + len;
             } else {
                 line = new ArrayList<>();
                 lines.add(line);
                 line.add(word);
-                lineLength = word.length();
+                lineLength = len;
             }
         }
 
