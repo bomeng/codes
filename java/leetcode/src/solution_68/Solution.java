@@ -10,19 +10,19 @@ public class Solution {
         List<String> line = new ArrayList<>();
         lines.add(line);
         int lineLength = 0;
-        for (int i = 0; i < words.length; i++) {
-            if (lineLength  == 0 || lineLength + 1 + words[i].length() <= maxWidth) {
-                line.add(words[i]);
+        for (String word : words) {
+            if (lineLength == 0 || lineLength + 1 + word.length() <= maxWidth) {
+                line.add(word);
                 if (lineLength == 0) {
-                    lineLength = words[i].length();
+                    lineLength = word.length();
                 } else {
-                    lineLength = lineLength + 1 + words[i].length();
+                    lineLength = lineLength + 1 + word.length();
                 }
             } else {
                 line = new ArrayList<>();
                 lines.add(line);
-                line.add(words[i]);
-                lineLength = words[i].length();
+                line.add(word);
+                lineLength = word.length();
             }
         }
 
