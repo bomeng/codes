@@ -12,11 +12,11 @@ public class Solution {
         int a = A[1];
         boolean increase = true;
         for (int i = 2; i < A.length; i++) {
-            if (a[i] == a) {
+            if (A[i] == a) {
                 return false;
-            } else if (a[i] < a && increase) {
+            } else if (A[i] < a && increase) {
                 increase = false;
-            } else if (a[i] > a && !increase) {
+            } else if (A[i] > a && !increase) {
                 return false;
             }
             a = A[i];
