@@ -24,9 +24,6 @@ public class Solution {
             right = nums[idx + 1];
         }
 
-        if (right >= left || idx == 1 || nums[idx - 2] <= nums[idx]) {
-            return true;
-        }
-        return false;
+        return right >= left || idx == 1 || nums[idx - 2] <= nums[idx];
     }
 }
