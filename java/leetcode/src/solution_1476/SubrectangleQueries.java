@@ -17,4 +17,5 @@ public class SubrectangleQueries {
 
     public int getValue(int row, int col) {
         return rectangles[row][col];
+    }
 }
